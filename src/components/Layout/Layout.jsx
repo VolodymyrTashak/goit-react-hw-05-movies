@@ -1,6 +1,7 @@
-import { Header, Nav, NavItem } from './Layout.styled';
-
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+
+import { Header, Nav, NavItem } from './Layout.styled';
 
 export const Layout = () => {
   return (
@@ -12,8 +13,10 @@ export const Layout = () => {
           </NavItem>
           <NavItem to="/movies">Movies</NavItem>
         </Header>
-        <Outlet />
       </Nav>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

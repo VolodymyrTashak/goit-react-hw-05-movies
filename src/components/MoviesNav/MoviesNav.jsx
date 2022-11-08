@@ -1,8 +1,11 @@
-import { MovieList, MovieItem, MovieLink } from './MoviesNav.styled';
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import { MovieList, MovieItem, MovieLink } from './MoviesNav.styled';
 
 export const MoviesNav = ({ movies }) => {
   const location = useLocation();
+
   return (
     <MovieList>
       {movies.map(movie => {
@@ -23,4 +26,8 @@ export const MoviesNav = ({ movies }) => {
       })}
     </MovieList>
   );
+};
+
+MoviesNav.propTypes = {
+  movies: PropTypes.array,
 };

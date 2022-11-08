@@ -1,12 +1,23 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { searchMovies } from 'api/getMovies';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import { Notify } from 'notiflix';
+import { BsSearch } from 'react-icons/bs';
+
+import { searchMovies } from 'api/getMovies';
 import { MoviesNav } from 'components/MoviesNav/MoviesNav';
 
+import { MoviesBackLink } from './Movies.styled';
+import {
+  MoviesBox,
+  MoviesForm,
+  MoviesFormInput,
+  MoviesFormButton,
+} from './Movies.styled';
+
 export const Movies = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const { searchParams, setSearchParams } = useParams();
+  const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
   const query = searchParams.get('query');
 
   const handleSubmit = e => {
@@ -17,33 +28,40 @@ export const Movies = () => {
       return;
     }
     searchMovies(query).then(res => {
-      searchQuery(res.data.results);
+      setMovies(res.data.results);
     });
     e.target.reset();
   };
 
+  const moviesBackLinkHref = location.state?.from ?? '/';
+
   useEffect(() => {
-    if (!query) {
-      return;
+    if (query) {
+      searchMovies(query).then(res => {
+        setMovies(res.data.results);
+      });
     }
-    searchMovies(query).then(res => {
-      setSearchQuery(res.data.results);
-    });
+    return;
   }, [query]);
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search images and photos"
-        />
-        <button type="submit">Button</button>
-      </form>
-
-      <MoviesNav searchQuery={searchQuery} />
+      <MoviesBox>
+        <MoviesBackLink to={moviesBackLinkHref}>Go back</MoviesBackLink>
+        <MoviesForm onSubmit={handleSubmit}>
+          <MoviesFormInput
+            type="text"
+            autoComplete="off"
+            autoFocus
+            name="name"
+            placeholder="Search movies name"
+          />
+          <MoviesFormButton type="submit">
+            <BsSearch size={25} />
+          </MoviesFormButton>
+        </MoviesForm>
+      </MoviesBox>
+      <MoviesNav movies={movies} />
     </>
   );
 };

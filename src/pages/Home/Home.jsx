@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+
 import { getTrending } from 'api/getMovies';
 import { MoviesNav } from 'components/MoviesNav/MoviesNav';
+
 import { MoviesBox, Title } from './Home.styled';
 
 export const Home = () => {
@@ -10,6 +12,7 @@ export const Home = () => {
       setMovies(res.data.results);
     });
   }, []);
+
   return (
     <MoviesBox>
       <Title>Trending today</Title>

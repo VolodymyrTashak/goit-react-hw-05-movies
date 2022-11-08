@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useLocation, Outlet } from 'react-router-dom';
+
 import { getMovieDetails } from 'api/getMovies';
+
 import {
   BackLink,
   Box,
@@ -19,15 +21,17 @@ export const MoviesDetails = () => {
   const location = useLocation();
   const { moviesId } = useParams();
 
+  const backLinkHref = location.state?.from ?? '/';
+  const date = new Date(movieDetails.release_date).getFullYear();
+  const { title, poster_path, original_title, vote_average, overview, genres } =
+    movieDetails;
+
   useEffect(() => {
     getMovieDetails(moviesId).then(res => {
       setMovieDetails(res.data);
     });
   }, [moviesId]);
-  const backLinkHref = location.state?.from ?? '/movies';
-  const date = new Date(movieDetails.release_date).getFullYear();
-  const { title, poster_path, original_title, vote_average, overview, genres } =
-    movieDetails;
+
   return (
     <>
       <BackLink to={backLinkHref}>Go back</BackLink>
