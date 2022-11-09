@@ -16,7 +16,7 @@ import {
   DescriptionLink,
 } from './MoviesDetails.styled';
 
-export const MoviesDetails = () => {
+const MoviesDetails = () => {
   const [movieDetails, setMovieDetails] = useState([]);
   const location = useLocation();
   const { moviesId } = useParams();
@@ -73,3 +73,5 @@ export const MoviesDetails = () => {
     </>
   );
 };
+
+export default MoviesDetails;

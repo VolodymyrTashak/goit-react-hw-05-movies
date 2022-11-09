@@ -5,7 +5,7 @@ import { MoviesNav } from 'components/MoviesNav/MoviesNav';
 
 import { MoviesBox, Title } from './Home.styled';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     getTrending().then(res => {
@@ -20,3 +20,5 @@ export const Home = () => {
     </MoviesBox>
   );
 };
+
+export default Home;

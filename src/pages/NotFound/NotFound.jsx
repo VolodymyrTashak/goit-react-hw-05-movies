@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Text } from './NotFound.styled';
 import { BackLink } from 'pages/MoviesDetails/MoviesDetails.styled';
 
-export const NotFound = () => {
+const NotFound = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
 
@@ -14,3 +14,5 @@ export const NotFound = () => {
     </>
   );
 };
+
+export default NotFound;
