@@ -19,7 +19,7 @@ export const Cast = () => {
 
   return (
     <CastItem>
-      {casts.length > 0
+      {!!casts.length
         ? casts.map(cast => {
             return (
               <CastList key={cast.id}>

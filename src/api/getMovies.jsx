@@ -1,8 +1,10 @@
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+
 export const getTrending = async () => {
-  const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
+  const BASE_URL = 'trending/movie/day';
   const params = {
     api_key: '58c8c07efdfe02ad884f1cfdb1f5606b',
   };
@@ -15,7 +17,7 @@ export const getTrending = async () => {
 };
 
 export const searchMovies = async query => {
-  const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
+  const BASE_URL = 'search/movie';
   const params = {
     api_key: '58c8c07efdfe02ad884f1cfdb1f5606b',
     query: `${query}`,
@@ -33,7 +35,7 @@ export const searchMovies = async query => {
 };
 
 export const getMovieDetails = async id => {
-  const BASE_URL = `https://api.themoviedb.org/3/movie/${id}`;
+  const BASE_URL = `movie/${id}`;
   const params = {
     api_key: '58c8c07efdfe02ad884f1cfdb1f5606b',
     language: 'en-US',
@@ -47,7 +49,7 @@ export const getMovieDetails = async id => {
 };
 
 export const getMovieCredits = async id => {
-  const BASE_URL = `https://api.themoviedb.org/3/movie/${id}/credits`;
+  const BASE_URL = `movie/${id}/credits`;
   const params = {
     api_key: '58c8c07efdfe02ad884f1cfdb1f5606b',
     language: 'en-US',
@@ -61,7 +63,7 @@ export const getMovieCredits = async id => {
 };
 
 export const getMovieReviews = async id => {
-  const BASE_URL = `https://api.themoviedb.org/3/movie/${id}/reviews`;
+  const BASE_URL = `movie/${id}/reviews`;
   const params = {
     api_key: '58c8c07efdfe02ad884f1cfdb1f5606b',
     language: 'en-US',

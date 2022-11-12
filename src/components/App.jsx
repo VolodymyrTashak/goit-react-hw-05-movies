@@ -12,11 +12,6 @@ const MoviesDetails = lazy(() =>
 );
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
 
-// import { Home } from 'pages/Home/Home';
-// import { Movies } from 'pages/Movies/Movies';
-// import { MoviesDetails } from 'pages/MoviesDetails/MoviesDetails';
-// import { NotFound } from 'pages/NotFound/NotFound';
-
 export const App = () => {
   return (
     <Routes>

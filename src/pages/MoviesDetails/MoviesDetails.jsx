@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useLocation, Outlet } from 'react-router-dom';
 
 import { getMovieDetails } from 'api/getMovies';
@@ -20,8 +20,9 @@ const MoviesDetails = () => {
   const [movieDetails, setMovieDetails] = useState([]);
   const location = useLocation();
   const { moviesId } = useParams();
+  const backPage = useRef(location.state?.from ?? null);
 
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = location.state?.from ?? backPage.current;
   const date = new Date(movieDetails.release_date).getFullYear();
   const { title, poster_path, original_title, vote_average, overview, genres } =
     movieDetails;
