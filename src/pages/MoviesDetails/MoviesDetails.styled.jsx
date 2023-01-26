@@ -11,17 +11,17 @@ export const BackLink = styled(Link)`
   font-weight: 500;
   color: black;
   :hover {
-    color: orange;
+    color: #6c1328;
   }
 `;
 
 export const Box = styled.div`
   display: flex;
-  margin-left: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
   margin-top: 20px;
   gap: 30px;
-  padding-bottom: 15px;
-  box-shadow: 0px 4px 5px 0px rgb(0 0 0 / 64%);
+  box-shadow: -1px 2px 15px 5px rgb(0 0 0 / 64%);
 `;
 
 export const MoviesBox = styled.div`
@@ -55,13 +55,32 @@ export const GenresItem = styled.ul`
 `;
 
 export const DescriptionList = styled.ul`
-  margin-left: 10px;
+  margin-left: 50px;
   list-style: none;
+
 `;
 
 export const DescriptionItem = styled.li`
+    width: 130px;
+    height: 35px;
+    margin-top: 30px;
+    border-radius: 40px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 8px;
+    line-height: 45px;
+    text-decoration: none;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    background: #c0ab91;
+    box-shadow: rgb(0 0 0 / 10%) 0px 8px 15px;
+    
   &:not(:last-child) {
     margin-bottom: 10px;
+  }
+  &:last-child {
+    margin-bottom: 30px;
   }
 `;
 
@@ -70,8 +89,8 @@ export const DescriptionLink = styled(Link)`
   font-size: 20px;
   line-height: 1.2;
   font-weight: 500;
-  color: black;
+  color: #6c1328;
   :hover {
-    color: orange;
+    color: white;
   }
 `;

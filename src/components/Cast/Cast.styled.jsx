@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 
 export const CastItem = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 10px;
+  display: grid;
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+  grid-template-columns: repeat(5,1fr);
+  margin-left: 50px;
+  margin-right: 50px;
   list-style: none;
 `;
 
 export const CastList = styled.li`
-  &:not(:last-child) {
-    margin-right: 15px;
-  }
+  width: 100%;
 `;
 
 export const CastText = styled.p`
